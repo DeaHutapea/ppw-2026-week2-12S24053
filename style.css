@@ -1,0 +1,563 @@
+/* =========================================================
+   1. UNIVERSAL RESET  (wajib menurut modul)
+   ========================================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================================
+   2. DESIGN TOKEN — palet 60-30-10
+   60% = permukaan netral, 30% = warna teks, 10% = aksen
+   ========================================================= */
+:root {
+  /* Palet 60-30-10 persis contoh teori 3.5.2 modul */
+  --bg:        #f8fafc;   /* 60% latar halaman (netral)     */
+  --surface:   #ffffff;   /* 60% permukaan kartu            */
+  --ink:       #1e293b;   /* 30% teks utama (abu-abu gelap) */
+  --ink-soft:  #64748b;   /* teks sekunder                  */
+  --line:      #e2e8f0;   /* garis pemisah                  */
+  --accent:    #2563eb;   /* 10% aksen — biru elektrik       */
+  --accent-dk: #1d4ed8;
+  --success:   #10b981;   /* aksen kedua — zamrud, dipakai sedikit (badge) */
+  --warn:      #b45309;
+
+  --radius:   16px;       /* sesuai anjuran modul: 12–16px  */
+  --shadow:   0 4px 6px -1px rgba(0, 0, 0, .05),
+              0 2px 4px -2px rgba(0, 0, 0, .05);
+  --shadow-hover: 0 12px 20px -3px rgba(0, 0, 0, .08);
+}
+
+/* =========================================================
+   3. DASAR HALAMAN & TIPOGRAFI
+   ========================================================= */
+body {
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { line-height: 1.2; }
+
+h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+h2 { font-size: 1.35rem; margin-bottom: .5rem; }
+h3 { font-size: 1rem;    margin: 1.4rem 0 .5rem; }
+
+p { max-width: 65ch; color: var(--ink-soft); }
+
+a { color: var(--accent); }
+
+/* fokus keyboard harus selalu terlihat (aksesibilitas) */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+/* =========================================================
+   4. HEADER & NAVIGASI  (Flexbox)
+   ========================================================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, .92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-block: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background-color: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: .85rem;
+}
+
+.brand-text { display: flex; flex-direction: column; }
+.brand-text small { color: var(--ink-soft); font-size: .72rem; }
+
+.site-nav ul {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: .9rem;
+  font-weight: 500;
+  padding-block: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color .2s ease, border-color .2s ease;
+}
+
+.site-nav a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* =========================================================
+   5. HERO
+   ========================================================= */
+.hero { padding-block: 56px 40px; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.hero-kicker {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: .85rem;
+  margin-bottom: .5rem;
+}
+
+.hero-lead { margin-top: 1rem; font-size: 1.02rem; }
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-top: 1.5rem;
+}
+
+/* ---- Kartu profil: banner gradien + avatar (gaya Lab 1) ---- */
+.profile-card {
+  background-color: var(--surface);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(30, 41, 59, .12),
+              0 8px 10px -6px rgba(0, 0, 0, .05);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 30px -10px rgba(30, 41, 59, .18);
+}
+
+.card-header-banner {
+  height: 90px;
+  background: linear-gradient(135deg, var(--accent) 0%, #60a5fa 100%);
+}
+
+.card-body {
+  padding: 0 24px 24px 24px;
+  text-align: center;
+  position: relative;
+}
+
+.avatar-container {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  margin: -42px auto 12px auto;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 4px solid var(--surface);
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
+}
+
+.status-badge {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  background-color: var(--success);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 12px;
+  border: 2px solid var(--surface);
+}
+
+.profile-name {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.profile-role {
+  font-size: .8rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 6px;
+}
+
+.stat-item { display: flex; flex-direction: column; }
+
+.stat-val {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.stat-lbl {
+  font-size: 9.5px;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+
+/* =========================================================
+   6. TATA LETAK 2 KOLOM  (CSS Grid)
+   ========================================================= */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+  gap: 24px;
+  padding-bottom: 64px;
+  align-items: start;
+}
+
+.col-main { display: grid; gap: 24px; }
+.col-side { display: grid; gap: 24px; position: sticky; top: 84px; }
+
+/* =========================================================
+   7. KARTU
+   ========================================================= */
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.side-card { padding: 22px; }
+.side-card h2 { font-size: 1rem; }
+
+/* =========================================================
+   8. LIST
+   ========================================================= */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+
+.tag-list li {
+  background-color: #eef4f2;
+  color: var(--accent-dk);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: .82rem;
+  font-weight: 600;
+}
+
+.step-list {
+  padding-left: 1.2rem;
+  color: var(--ink-soft);
+  display: grid;
+  gap: .35rem;
+}
+
+.fact-list {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .4rem 1rem;
+  font-size: .88rem;
+}
+
+.fact-list dt { color: var(--ink-soft); }
+.fact-list dd { font-weight: 600; text-align: right; }
+
+.hours {
+  list-style: none;
+  font-size: .88rem;
+  display: grid;
+  gap: .45rem;
+}
+
+.hours li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: .45rem;
+}
+
+.hours li:last-child { border-bottom: 0; }
+
+/* =========================================================
+   9. TABEL
+   ========================================================= */
+.table-scroll { overflow-x: auto; margin-top: 1rem; }
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+  min-width: 520px;
+}
+
+.data-table caption {
+  caption-side: top;
+  text-align: left;
+  color: var(--ink-soft);
+  font-size: .8rem;
+  padding-bottom: .6rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 11px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+.data-table thead th {
+  background-color: #eef4f2;
+  color: var(--accent-dk);
+  font-size: .78rem;
+  font-weight: 700;
+}
+
+.data-table tbody tr:hover { background-color: #f7faf9; }
+
+.data-table tfoot th,
+.data-table tfoot td {
+  font-weight: 700;
+  border-bottom: 0;
+  background-color: #fafbfb;
+}
+
+.pill {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: .74rem;
+  font-weight: 600;
+}
+
+.pill-done     { background-color: #e3f2ee; color: var(--accent-dk); }
+.pill-progress { background-color: #fdf0e1; color: var(--warn); }
+
+/* =========================================================
+   10. FORMULIR
+   ========================================================= */
+.custom-form { margin-top: 1.2rem; }
+
+.form-fieldset {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.form-legend {
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--accent-dk);
+  padding-inline: 8px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+
+.form-group { margin-bottom: 4px; }
+
+.form-label {
+  display: block;
+  font-size: .85rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.req { color: #b91c1c; }
+
+.form-control {
+  width: 100%;
+  font: inherit;
+  font-size: .9rem;
+  padding: 10px 12px;
+  color: var(--ink);
+  background-color: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 9px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3.5px rgba(13, 107, 99, .18);
+}
+
+.form-help {
+  display: block;
+  font-size: .75rem;
+  color: var(--ink-soft);
+  margin-top: 4px;
+}
+
+.form-subgroup {
+  border: 0;
+  margin-bottom: 14px;
+}
+
+.form-sublegend {
+  font-size: .85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: .88rem;
+  margin-bottom: 6px;
+}
+
+.choice input { margin-top: 4px; accent-color: var(--accent); }
+
+/* =========================================================
+   11. TOMBOL
+   ========================================================= */
+.btn {
+  display: inline-block;
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  padding: 11px 20px;
+  border-radius: 10px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background-color .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 12px -4px rgba(13, 107, 99, .55);
+}
+
+.btn-primary:hover { background-color: var(--accent-dk); }
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+.btn-block { width: 100%; }
+
+/* =========================================================
+   12. FOOTER
+   ========================================================= */
+.site-footer {
+  background-color: var(--surface);
+  border-top: 1px solid var(--line);
+  padding-block: 22px;
+  font-size: .85rem;
+  color: var(--ink-soft);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-inner ul { display: flex; gap: 1rem; list-style: none; }
+.footer-inner a { color: var(--ink-soft); text-decoration: none; }
+.footer-inner a:hover { color: var(--accent); text-decoration: underline; }
+
+/* =========================================================
+   13. RESPONSIF — Media Queries (wajib menurut modul)
+   ========================================================= */
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;   /* kolom menumpuk ke bawah */
+  }
+  .hero-grid {
+    grid-template-columns: 1fr;   /* kartu profil turun ke bawah teks */
+  }
+  .col-side { position: static; }
+  .hero { padding-block: 40px 24px; }
+  .card { padding: 20px; }
+  .header-inner { justify-content: center; }
+}
+
+@media (max-width: 420px) {
+  .hero-actions .btn { width: 100%; }
+}
+
+/* Hormati pengguna yang mematikan animasi */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
