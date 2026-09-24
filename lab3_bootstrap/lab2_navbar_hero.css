@@ -1,0 +1,29 @@
+/* Custom overrides untuk Lab 2 — semua ini menimpa/melengkapi Bootstrap,
+   bukan mengganti totalnya. Perhatikan: TIDAK ADA !important di sini. */
+
+:root {
+  --primary-brand: #0284c7;
+}
+
+/* Menimpa warna default Bootstrap Blue (#0d6efd) jadi warna identitas kita.
+   Ini contoh override yang "elegan" — pakai custom property Bootstrap sendiri,
+   bukan menimpa paksa tiap class satu-satu. */
+:root {
+  --bs-primary: var(--primary-brand);
+  --bs-primary-rgb: 2, 132, 199;
+}
+
+body { font-family: "Segoe UI", system-ui, sans-serif; }
+
+.hero-section {
+  padding-block: 64px 80px;
+  background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
+}
+
+.hero-card {
+  border: 1px solid #e2e8f0;
+}
+
+@media (max-width: 991.98px) {
+  .hero-section { padding-block: 40px 48px; }
+}

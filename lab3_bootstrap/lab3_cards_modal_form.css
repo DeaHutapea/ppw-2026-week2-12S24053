@@ -1,0 +1,21 @@
+:root {
+  --primary-brand: #0284c7;
+  --card-radius: 14px;
+}
+
+.project-card {
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 24px -8px rgba(0, 0, 0, 0.12);
+}
+
+.card-banner { height: 90px; }
+.banner-blue   { background: linear-gradient(135deg, #0284c7, #38bdf8); }
+.banner-green  { background: linear-gradient(135deg, #16a34a, #4ade80); }
+.banner-purple { background: linear-gradient(135deg, #7c3aed, #a78bfa); }

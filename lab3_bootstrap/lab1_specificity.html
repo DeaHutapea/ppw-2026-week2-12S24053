@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 1 — Specificity & CSS Variables</title>
+  <link rel="stylesheet" href="lab1_specificity.css">
+</head>
+<body>
+
+  <main class="lab-page">
+    <h1>Lab 1: Specificity, Pseudo-class &amp; CSS Variables</h1>
+
+    <!-- ===== BAGIAN A: Bukti Specificity ===== -->
+    <section>
+      <h2>A. Uji Spesifisitas</h2>
+      <p class="demo-text" id="demo-text">
+        Teks ini punya TIGA aturan warna sekaligus: element selector (p), class (.demo-text),
+        id (#demo-text), dan inline style. Warna yang menang adalah inline style (oranye),
+        karena skornya 1000 — paling tinggi. Coba hapus atribut style di HTML dan lihat
+        warna berubah jadi warna dari #demo-text (skor 100).
+      </p>
+    </section>
+
+    <!-- ===== BAGIAN B: Kartu statistik dengan pseudo-element ::before ===== -->
+    <section>
+      <h2>B. Kartu Statistik — Hover untuk lihat garis aksen (::before)</h2>
+      <div class="metric-grid">
+        <div class="metric-card" data-accent="blue">
+          <div class="card-icon">&#9889;</div>
+          <div class="card-info">
+            <span class="metric-label">Proyek Diselesaikan</span>
+            <strong class="metric-value">12 Proyek</strong>
+          </div>
+        </div>
+
+        <div class="metric-card" data-accent="green">
+          <div class="card-icon">&#127942;</div>
+          <div class="card-info">
+            <span class="metric-label">Sertifikat</span>
+            <strong class="metric-value">4 Sertifikat</strong>
+          </div>
+        </div>
+
+        <div class="metric-card" data-accent="purple">
+          <div class="card-icon">&#128101;</div>
+          <div class="card-info">
+            <span class="metric-label">Kolaborasi Tim</span>
+            <strong class="metric-value">6 Proyek</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BAGIAN C: Combinator & pseudo-class struktural ===== -->
+    <section>
+      <h2>C. Combinator &amp; :nth-child</h2>
+      <p>Baris tabel genap otomatis diberi warna berbeda pakai <code>:nth-child(even)</code>, tanpa class tambahan di HTML.</p>
+      <table class="demo-table">
+        <thead>
+          <tr><th>No</th><th>Mata Kuliah</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Pemrograman Web</td><td>Berjalan</td></tr>
+          <tr><td>2</td><td>Basis Data Lanjut</td><td>Berjalan</td></tr>
+          <tr><td>3</td><td>Kecerdasan Buatan</td><td>Berjalan</td></tr>
+          <tr><td>4</td><td>Jaringan Komputer</td><td>Berjalan</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Child combinator (&gt;) &amp; focus-within</h3>
+      <div class="input-wrap">
+        <label for="contoh-input">Coba klik kotak ini:</label>
+        <input type="text" id="contoh-input" placeholder="Kotak ini akan disorot saat fokus">
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

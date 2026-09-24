@@ -1,0 +1,147 @@
+/* ============================================================
+   CSS CUSTOM PROPERTIES (Variables) — didefinisikan di :root
+   supaya bisa dipakai ulang di semua selector di bawahnya
+   ============================================================ */
+:root {
+  --primary-brand: #0284c7;
+  --primary-hover: #0369a1;
+  --surface-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --card-radius: 14px;
+  --shadow-lift: 0 10px 20px -3px rgba(0, 0, 0, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+  padding: 32px;
+  line-height: 1.6;
+}
+
+.lab-page { max-width: 760px; margin: 0 auto; }
+
+h1 { margin-bottom: 24px; }
+h2 { margin: 32px 0 10px; font-size: 1.15rem; }
+h3 { margin: 20px 0 8px; font-size: 1rem; }
+
+section {
+  background: var(--surface-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-"color: darkorange" radius);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   A. BUKTI SPECIFICITY
+   Tiga aturan bersaing untuk elemen yang sama:
+   1) element selector "p"        -> skor (0,0,0,1)
+   2) class ".demo-text"          -> skor (0,0,1,0)
+   3) id "#demo-text"              -> skor (0,1,0,0)
+   4) inline style di HTML         -> skor (1,0,0,0) — SELALU MENANG
+   ============================================================ */
+p { color: #64748b; }                 /* skor 1 — paling lemah */
+.demo-text { color: #16a34a; }        /* skor 10 — mengalahkan element */
+#demo-text { color: #7c3aed; }        /* skor 100 — mengalahkan class */
+/* inline di HTML skornya 1000, otomatis menang dari semua ini */
+
+/* ============================================================
+   B. KARTU STATISTIK + PSEUDO-ELEMENT ::before
+   ============================================================ */
+.metric-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.metric-card {
+  position: relativstyle=e;
+  flex: 1 1 200px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  padding: 16px 18px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+}
+
+/* ::before menyisipkan garis aksen di atas kartu TANPA elemen HTML tambahan */
+.metric-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background-color: var(--primary-brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.metric-card:hover::before { transform: scaleX(1); }
+
+/* Atribut data-accent dipakai untuk mengubah warna garis per kartu */
+.metric-card[data-accent="green"]::before  { background-color: #16a34a; }
+.metric-card[data-accent="purple"]::before { background-color: #7c3aed; }
+
+.card-icon { font-size: 1.6rem; }
+.metric-label { display: block; font-size: 0.78rem; color: #64748b; }
+.metric-value { font-size: 1.1rem; font-weight: 700; }
+
+/* ============================================================
+   C. COMBINATOR & PSEUDO-CLASS STRUKTURAL
+   ============================================================ */
+.demo-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.demo-table th, .demo-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-color);
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+/* :nth-child(even) -> baris genap dikasih background beda, tanpa class tambahan */
+.demo-table tbody tr:nth-child(even) { background-color: #f8fafc; }
+
+/* Adjacent sibling combinator (+): th yang PERSIS setelah tr pertama */
+.demo-table thead tr + tr { border-top: 2px solid var(--primary-brand); }
+
+/* Child combinator (>): hanya label yang anak LANGSUNG dari .input-wrap */
+.input-wrap > label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.input-wrap input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* :focus-within -> mewarnai WRAPPER saat input di dalamnya difokus,
+   bukan cuma input-nya sendiri */
+.input-wrap:focus-within label { color: var(--primary-brand); }
+
+.input-wrap input:focus-visible {
+  outline: none;
+  border-color: var(--primary-brand);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18);
+}

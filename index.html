@@ -4,300 +4,434 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portofolio — Dea Hutapea | Pemrograman & Pengujian Aplikasi Web</title>
-  <meta name="description" content="Halaman portofolio akademik mahasiswa Institut Teknologi Del: profil, rekap proyek, keahlian, dan formulir pemesanan layanan konsultasi web.">
+  <meta name="description" content="Halaman portofolio akademik Dea Hutapea, direfaktor memakai Bootstrap 5 dan CSS kustom — profil, grid proyek dengan modal detail, dan formulir layanan modern.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- 1. Bootstrap 5.3 CSS via CDN (harus dimuat lebih dulu) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- 2. Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <!-- 3. Custom CSS SELALU terakhir, supaya bisa menimpa/melengkapi Bootstrap -->
+  <link rel="stylesheet" href="custom-style.css">
 </head>
 <body>
 
-  <!-- ============ HEADER: logo + navigasi ============ -->
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="brand" href="#beranda">
-        <span class="brand-mark" aria-hidden="true">DH</span>
-        <span class="brand-text">
-          <strong>Dea Hutapea</strong>
-          <small>S1 Sistem Informasi — IT Del</small>
-        </span>
-      </a>
+  <!-- ============ HEADER: navbar responsif Bootstrap ============ -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm py-3">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#hero">
+          <span class="brand-mark">DH</span>
+          <span class="d-flex flex-column lh-sm">
+            Dea Hutapea
+            <small class="fw-normal text-white-50" style="font-size:.7rem;">S1 Sistem Informasi — IT Del</small>
+          </span>
+        </a>
 
-      <nav class="site-nav" aria-label="Navigasi utama">
-        <ul>
-          <li><a href="#tentang">Tentang saya</a></li>
-          <li><a href="#portofolio">Portofolio</a></li>
-          <li><a href="#layanan">Pesan layanan</a></li>
-        </ul>
-      </nav>
-    </div>
+        <button class="navbar-toggler border-0" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Buka menu navigasi">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="#tentang">Tentang saya</a></li>
+            <li class="nav-item"><a class="nav-link" href="#portofolio">Portofolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#layanan">Pesan layanan</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </header>
 
-  <!-- ============ MAIN: hanya boleh ada satu di satu dokumen ============ -->
-  <main id="beranda">
+  <!-- ============ MAIN ============ -->
+  <main id="hero">
 
-    <!-- ---------- Hero: teks + kartu profil (banner & avatar gaya Lab 1) ---------- -->
-    <section class="hero wrap" aria-labelledby="judul-hero">
-      <div class="hero-grid">
+    <!-- ---------- HERO SECTION ---------- -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center gy-5">
 
-        <div class="hero-copy">
-          <p class="hero-kicker">Mahasiswa &amp; calon web engineer</p>
-          <h1 id="judul-hero">Saya membangun halaman web yang rapi, cepat diakses, dan enak dilihat.</h1>
-          <p class="hero-lead">
-            Fokus saya di HTML semantik, CSS modern, dan aksesibilitas. Halaman ini saya susun
-            sebagai tugas Minggu 2 mata kuliah Pemrograman dan Pengujian Aplikasi Web (12S3101).
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#layanan">Pesan konsultasi</a>
-            <a class="btn btn-ghost" href="#portofolio">Lihat proyek</a>
+          <div class="col-lg-7">
+            <p class="text-primary fw-semibold mb-2">Mahasiswa &amp; calon web engineer</p>
+            <h1 class="display-5 fw-bold mb-3">Saya membangun halaman web yang rapi, cepat diakses, dan enak dilihat.</h1>
+            <p class="lead text-secondary mb-4">
+              Fokus saya di HTML semantik, CSS modern, dan aksesibilitas. Halaman ini direfaktor
+              memakai Bootstrap 5 pada Minggu 3 mata kuliah Pemrograman dan Pengujian Aplikasi Web (12S3101).
+            </p>
+            <div class="d-flex gap-2 flex-wrap">
+              <a href="#layanan" class="btn btn-primary btn-lg">
+                <i class="bi bi-chat-dots me-1"></i> Pesan konsultasi
+              </a>
+              <a href="#portofolio" class="btn btn-outline-secondary btn-lg">Lihat proyek</a>
+            </div>
           </div>
+
+          <div class="col-lg-5">
+            <article class="profile-card">
+              <div class="card-header-banner"></div>
+              <div class="card-body-custom">
+                <div class="avatar-container">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=240&auto=format&fit=crop"
+                       alt="Foto profil Dea Hutapea" class="avatar-img">
+                  <span class="status-badge">Aktif</span>
+                </div>
+                <h2 class="profile-name">Dea Hutapea</h2>
+                <p class="profile-role">Mahasiswa S1 Sistem Informasi</p>
+                <div class="profile-stats">
+                  <div class="stat-item"><span class="stat-val">8</span><span class="stat-lbl">Proyek</span></div>
+                  <div class="stat-item"><span class="stat-val">3.72</span><span class="stat-lbl">IPK</span></div>
+                  <div class="stat-item"><span class="stat-val">AA</span><span class="stat-lbl">WCAG</span></div>
+                </div>
+              </div>
+            </article>
+          </div>
+
         </div>
-
-        <article class="profile-card" aria-label="Kartu profil singkat">
-          <div class="card-header-banner"></div>
-          <div class="card-body">
-            <div class="avatar-container">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=240&auto=format&fit=crop"
-                   alt="Foto profil Dea Hutapea" class="avatar-img">
-              <span class="status-badge">Aktif</span>
-            </div>
-            <h2 class="profile-name">Dea Hutapea</h2>
-            <p class="profile-role">Mahasiswa S1 Sistem Informasi</p>
-
-            <div class="profile-stats">
-              <div class="stat-item"><span class="stat-val">8</span><span class="stat-lbl">Proyek</span></div>
-              <div class="stat-item"><span class="stat-val">3.72</span><span class="stat-lbl">IPK</span></div>
-              <div class="stat-item"><span class="stat-val">AA</span><span class="stat-lbl">WCAG</span></div>
-            </div>
-          </div>
-        </article>
-
       </div>
     </section>
 
-    <div class="wrap layout">
+    <div class="container py-5">
+      <div class="row g-4">
 
-      <!-- kolom kiri: konten utama -->
-      <div class="col-main">
+        <!-- kolom kiri: konten utama -->
+        <div class="col-lg-8">
 
-        <!-- ---------- SECTION 1: Tentang saya ---------- -->
-        <section id="tentang" class="card" aria-labelledby="judul-tentang">
-          <h2 id="judul-tentang">Tentang saya</h2>
-          <p>
-            Saya mahasiswa S1 Sistem Informasi Institut Teknologi Del. Saya suka mengubah
-            rancangan antarmuka menjadi kode yang bersih: struktur yang masuk akal buat
-            pembaca layar, warna yang kontrasnya cukup, dan tata letak yang tidak pecah di layar kecil.
-          </p>
+          <!-- ---------- TENTANG SAYA ---------- -->
+          <section id="tentang" class="content-card mb-4" aria-labelledby="judul-tentang">
+            <h2 id="judul-tentang" class="h4 mb-3">Tentang saya</h2>
+            <p class="text-secondary">
+              Saya mahasiswa S1 Sistem Informasi Institut Teknologi Del. Saya suka mengubah rancangan
+              antarmuka menjadi kode yang bersih: struktur yang masuk akal buat pembaca layar, warna yang
+              kontrasnya cukup, dan tata letak yang tidak pecah di layar kecil.
+            </p>
 
-          <!-- HTML List jenis 1: unordered list -->
-          <h3>Keahlian utama</h3>
-          <ul class="tag-list">
-            <li>HTML5 semantik</li>
-            <li>CSS modern (Flexbox &amp; Grid)</li>
-            <li>Aksesibilitas WCAG 2.2 AA</li>
-            <li>Git &amp; GitHub Pages</li>
-          </ul>
+            <h3 class="h6 mt-4 mb-2">Keahlian utama</h3>
+            <ul class="tag-list list-unstyled d-flex flex-wrap gap-2 mb-0">
+              <li class="tag-pill">HTML5 semantik</li>
+              <li class="tag-pill">Bootstrap 5</li>
+              <li class="tag-pill">CSS Custom Properties</li>
+              <li class="tag-pill">Aksesibilitas WCAG 2.2 AA</li>
+              <li class="tag-pill">Git &amp; GitHub Pages</li>
+            </ul>
+          </section>
 
-          <!-- HTML List jenis 2: ordered list (urutan langkah = memang berurutan) -->
-          <h3>Cara saya mengerjakan proyek</h3>
-          <ol class="step-list">
-            <li>Menentukan tujuan halaman dan siapa penggunanya.</li>
-            <li>Menyusun kerangka HTML semantik sebelum menyentuh CSS.</li>
-            <li>Menata visual: tipografi, warna, jarak, lalu responsif.</li>
-            <li>Menguji dengan keyboard dan DevTools, baru deploy.</li>
-          </ol>
-        </section>
+          <!-- ---------- PORTOFOLIO: GRID KARTU + MODAL ---------- -->
+          <section id="portofolio" class="content-card" aria-labelledby="judul-portofolio">
+            <h2 id="judul-portofolio" class="h4 mb-1">Portofolio karya</h2>
+            <p class="text-secondary mb-4">Proyek dari praktikum Pemrograman dan Pengujian Aplikasi Web.</p>
 
-        <!-- ---------- SECTION 2: Portofolio + tabel semantik ---------- -->
-        <section id="portofolio" class="card" aria-labelledby="judul-portofolio">
-          <h2 id="judul-portofolio">Portofolio karya</h2>
-          <p>Rekapitulasi proyek praktikum dan nilai capaian sementara.</p>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
 
-          <div class="table-scroll">
-            <table class="data-table">
-              <caption>Rekapitulasi proyek mata kuliah, semester genap 2025/2026</caption>
+              <!-- Kartu 1 -->
+              <div class="col">
+                <div class="card project-card h-100 shadow-sm">
+                  <div class="card-banner banner-blue"></div>
+                  <div class="card-body">
+                    <span class="badge text-bg-primary mb-2">HTML5 &amp; CSS</span>
+                    <h3 class="h6 card-title">Portofolio Pribadi (Minggu 2)</h3>
+                    <p class="card-text text-secondary small">
+                      Halaman portofolio semantik dengan tabel data, list, dan formulir accessible 9 jenis input.
+                    </p>
+                    <button type="button" class="btn btn-outline-primary btn-sm mt-2"
+                            data-bs-toggle="modal" data-bs-target="#modalProyek1">
+                      Lihat Detail
+                    </button>
+                  </div>
+                </div>
+              </div>
 
-              <thead>
-                <tr>
-                  <th scope="col">Minggu</th>
-                  <th scope="col">Nama proyek</th>
-                  <th scope="col">Teknologi</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Nilai</th>
-                </tr>
-              </thead>
+              <!-- Kartu 2 -->
+              <div class="col">
+                <div class="card project-card h-100 shadow-sm">
+                  <div class="card-banner banner-emerald"></div>
+                  <div class="card-body">
+                    <span class="badge text-bg-success mb-2">Aksesibilitas</span>
+                    <h3 class="h6 card-title">Formulir Konsultasi Accessible</h3>
+                    <p class="card-text text-secondary small">
+                      Formulir dengan label eksplisit, fieldset terkelompok, dan validasi native HTML5.
+                    </p>
+                    <button type="button" class="btn btn-outline-success btn-sm mt-2"
+                            data-bs-toggle="modal" data-bs-target="#modalProyek2">
+                      Lihat Detail
+                    </button>
+                  </div>
+                </div>
+              </div>
 
-              <tbody>
-                <tr>
-                  <th scope="row">01</th>
-                  <td>Profil dasar HTML</td>
-                  <td>HTML5</td>
-                  <td><span class="pill pill-done">Selesai</span></td>
-                  <td>90</td>
-                </tr>
-                <tr>
-                  <th scope="row">02</th>
-                  <td>Developer profile card</td>
-                  <td>HTML5, CSS3</td>
-                  <td><span class="pill pill-done">Selesai</span></td>
-                  <td>92</td>
-                </tr>
-                <tr>
-                  <th scope="row">03</th>
-                  <td>Formulir konsultasi accessible</td>
-                  <td>HTML5, CSS3, WCAG</td>
-                  <td><span class="pill pill-progress">Berjalan</span></td>
-                  <td>—</td>
-                </tr>
-              </tbody>
+              <!-- Kartu 3 -->
+              <div class="col">
+                <div class="card project-card h-100 shadow-sm">
+                  <div class="card-banner banner-indigo"></div>
+                  <div class="card-body">
+                    <span class="badge text-bg-secondary mb-2">Bootstrap 5</span>
+                    <h3 class="h6 card-title">Navbar &amp; Hero Responsif</h3>
+                    <p class="card-text text-secondary small">
+                      Navigasi dengan tombol hamburger dan hero multi-kolom berbasis grid 12-kolom Bootstrap.
+                    </p>
+                    <button type="button" class="btn btn-outline-secondary btn-sm mt-2"
+                            data-bs-toggle="modal" data-bs-target="#modalProyek3">
+                      Lihat Detail
+                    </button>
+                  </div>
+                </div>
+              </div>
 
-              <tfoot>
-                <tr>
-                  <th scope="row" colspan="4">Rata-rata nilai proyek selesai</th>
-                  <td>91</td>
-                </tr>
-              </tfoot>
-            </table>
+              <!-- Kartu 4 -->
+              <div class="col">
+                <div class="card project-card h-100 shadow-sm">
+                  <div class="card-banner banner-amber"></div>
+                  <div class="card-body">
+                    <span class="badge text-bg-warning text-dark mb-2">CSS Lanjutan</span>
+                    <h3 class="h6 card-title">Specificity &amp; CSS Variables</h3>
+                    <p class="card-text text-secondary small">
+                      Eksperimen kalkulasi spesifisitas, pseudo-element, dan arsitektur variabel warna.
+                    </p>
+                    <button type="button" class="btn btn-outline-warning btn-sm mt-2"
+                            data-bs-toggle="modal" data-bs-target="#modalProyek4">
+                      Lihat Detail
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+        </div>
+
+        <!-- ---------- ASIDE ---------- -->
+        <aside class="col-lg-4">
+          <div class="content-card mb-4">
+            <h2 class="h6 mb-3">Info singkat</h2>
+            <dl class="fact-list mb-0">
+              <div class="d-flex justify-content-between border-bottom py-2">
+                <dt class="text-secondary">NIM</dt><dd class="fw-semibold mb-0">12S24053</dd>
+              </div>
+              <div class="d-flex justify-content-between border-bottom py-2">
+                <dt class="text-secondary">Program studi</dt><dd class="fw-semibold mb-0">S1 Sistem Informasi</dd>
+              </div>
+              <div class="d-flex justify-content-between border-bottom py-2">
+                <dt class="text-secondary">Mata kuliah</dt><dd class="fw-semibold mb-0">12S3101 — PPW</dd>
+              </div>
+              <div class="d-flex justify-content-between py-2">
+                <dt class="text-secondary">Lokasi</dt><dd class="fw-semibold mb-0">Laguboti, Toba</dd>
+              </div>
+            </dl>
           </div>
-        </section>
 
-        <!-- ---------- SECTION 3: Formulir layanan ---------- -->
-        <section id="layanan" class="card" aria-labelledby="judul-layanan">
-          <h2 id="judul-layanan">Pesan layanan konsultasi</h2>
-          <p>Isi formulir berikut. Tanda <span class="req">*</span> berarti wajib diisi.</p>
+          <div class="content-card">
+            <h2 class="h6 mb-3">Jam konsultasi</h2>
+            <ul class="list-unstyled mb-0 small">
+              <li class="d-flex justify-content-between border-bottom py-2">
+                <span>Senin–Jumat</span><span class="fw-semibold">16.00–18.00</span>
+              </li>
+              <li class="d-flex justify-content-between border-bottom py-2">
+                <span>Sabtu</span><span class="fw-semibold">09.00–12.00</span>
+              </li>
+              <li class="d-flex justify-content-between py-2">
+                <span>Minggu</span><span class="fw-semibold">Libur</span>
+              </li>
+            </ul>
+          </div>
+        </aside>
 
-          <form class="custom-form" action="#" method="POST">
-
-            <!-- FIELDSET 1 -->
-            <fieldset class="form-fieldset">
-              <legend class="form-legend">Data identitas</legend>
-
-              <div class="form-grid">
-                <!-- 1. text -->
-                <div class="form-group">
-                  <label class="form-label" for="nama">Nama lengkap <span class="req">*</span></label>
-                  <input class="form-control" type="text" id="nama" name="nama" required
-                         placeholder="Contoh: Ruth Sianipar">
-                </div>
-
-                <!-- 2. email -->
-                <div class="form-group">
-                  <label class="form-label" for="email">Email kampus <span class="req">*</span></label>
-                  <input class="form-control" type="email" id="email" name="email" required
-                         placeholder="nama@students.del.ac.id" aria-describedby="email-help">
-                  <small class="form-help" id="email-help">Pakai email resmi Del supaya bisa diverifikasi.</small>
-                </div>
-
-                <!-- 3. tel -->
-                <div class="form-group">
-                  <label class="form-label" for="telepon">Nomor WhatsApp</label>
-                  <input class="form-control" type="tel" id="telepon" name="telepon"
-                         pattern="[0-9+ ]{9,15}" placeholder="08xxxxxxxxxx" aria-describedby="tel-help">
-                  <small class="form-help" id="tel-help">Angka saja, 9–15 digit.</small>
-                </div>
-
-                <!-- 4. number -->
-                <div class="form-group">
-                  <label class="form-label" for="semester">Semester saat ini <span class="req">*</span></label>
-                  <input class="form-control" type="number" id="semester" name="semester"
-                         min="1" max="14" step="1" value="4" required>
-                </div>
-
-                <!-- 5. date -->
-                <div class="form-group">
-                  <label class="form-label" for="tanggal">Tanggal konsultasi <span class="req">*</span></label>
-                  <input class="form-control" type="date" id="tanggal" name="tanggal" required>
-                </div>
-              </div>
-            </fieldset>
-
-            <!-- FIELDSET 2 -->
-            <fieldset class="form-fieldset">
-              <legend class="form-legend">Detail permintaan</legend>
-
-              <!-- 6. select -->
-              <div class="form-group">
-                <label class="form-label" for="topik">Topik konsultasi</label>
-                <select class="form-control" id="topik" name="topik">
-                  <option value="frontend">Frontend &amp; UI/UX</option>
-                  <option value="backend">Backend &amp; cloud</option>
-                  <option value="testing">Pengujian aplikasi web</option>
-                </select>
-              </div>
-
-              <!-- 7. radio (dikelompokkan dalam fieldset sendiri) -->
-              <fieldset class="form-subgroup">
-                <legend class="form-sublegend">Mode pertemuan</legend>
-                <div class="choice">
-                  <input type="radio" id="mode-online" name="mode" value="online" checked>
-                  <label for="mode-online">Daring (Google Meet)</label>
-                </div>
-                <div class="choice">
-                  <input type="radio" id="mode-offline" name="mode" value="offline">
-                  <label for="mode-offline">Luring (kampus IT Del)</label>
-                </div>
-              </fieldset>
-
-              <!-- 8. textarea -->
-              <div class="form-group">
-                <label class="form-label" for="pesan">Deskripsi kebutuhan <span class="req">*</span></label>
-                <textarea class="form-control" id="pesan" name="pesan" rows="4" required
-                          placeholder="Ceritakan singkat masalah atau target proyekmu."></textarea>
-              </div>
-
-              <!-- 9. checkbox -->
-              <div class="choice">
-                <input type="checkbox" id="setuju" name="setuju" required>
-                <label for="setuju">Saya setuju data ini dipakai untuk penjadwalan. <span class="req">*</span></label>
-              </div>
-            </fieldset>
-
-            <button class="btn btn-primary btn-block" type="submit">Kirim permintaan</button>
-          </form>
-        </section>
       </div>
-
-      <!-- ---------- ASIDE: konten pelengkap ---------- -->
-      <aside class="col-side" aria-labelledby="judul-aside">
-        <div class="card side-card">
-          <h2 id="judul-aside">Info singkat</h2>
-          <dl class="fact-list">
-            <dt>NIM</dt>
-            <dd>12S24053</dd>
-            <dt>Program studi</dt>
-            <dd>S1 Sistem Informasi</dd>
-            <dt>Mata kuliah</dt>
-            <dd>12S3101 — PPW</dd>
-            <dt>Lokasi</dt>
-            <dd>Laguboti, Toba</dd>
-          </dl>
-        </div>
-
-        <div class="card side-card">
-          <h2>Jam konsultasi</h2>
-          <ul class="hours">
-            <li><span>Senin–Jumat</span> <span>16.00–18.00</span></li>
-            <li><span>Sabtu</span> <span>09.00–12.00</span></li>
-            <li><span>Minggu</span> <span>Libur</span></li>
-          </ul>
-        </div>
-      </aside>
     </div>
+
+    <!-- ---------- FORMULIR LAYANAN (Bootstrap floating labels) ---------- -->
+    <section id="layanan" class="py-5 bg-light-subtle" aria-labelledby="judul-layanan">
+      <div class="container">
+        <div class="content-card mx-auto" style="max-width: 720px;">
+          <h2 id="judul-layanan" class="h4 mb-1">Pesan layanan konsultasi</h2>
+          <p class="text-secondary mb-4">Isi formulir berikut. Tanda <span class="text-danger">*</span> berarti wajib diisi.</p>
+
+          <form class="row g-3 needs-validation" novalidate>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="nama" placeholder="Nama" required>
+                <label for="nama"><i class="bi bi-person me-1"></i> Nama Lengkap *</label>
+                <div class="invalid-feedback">Nama wajib diisi.</div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="email" placeholder="nama@del.ac.id" required>
+                <label for="email"><i class="bi bi-envelope me-1"></i> Email Kampus *</label>
+                <div class="invalid-feedback">Alamat email valid wajib disertakan.</div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="telepon" class="form-label">Nomor WhatsApp</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                <input type="tel" class="form-control" id="telepon" name="telepon"
+                       pattern="[0-9+ ]{9,15}" placeholder="08xxxxxxxxxx">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="topik" class="form-label">Topik konsultasi</label>
+              <select class="form-select" id="topik" name="topik">
+                <option value="frontend">Frontend Engineering &amp; UI/UX</option>
+                <option value="backend">Backend &amp; Cloud Architecture</option>
+                <option value="testing">Web Quality Assurance &amp; Testing</option>
+              </select>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label d-block mb-1">Mode pertemuan</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="mode" id="mode-online" value="online" checked>
+                <label class="form-check-label" for="mode-online">Daring (Google Meet)</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="mode" id="mode-offline" value="offline">
+                <label class="form-check-label" for="mode-offline">Luring (kampus IT Del)</label>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="form-floating">
+                <textarea class="form-control" id="pesan" style="height: 110px" required
+                          placeholder="Deskripsi kebutuhan"></textarea>
+                <label for="pesan">Deskripsi Kebutuhan *</label>
+                <div class="invalid-feedback">Deskripsi tidak boleh kosong.</div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="setuju" required>
+                <label class="form-check-label" for="setuju">
+                  Saya setuju data ini dipakai untuk penjadwalan. *
+                </label>
+                <div class="invalid-feedback">Kamu harus menyetujui ini sebelum mengirim.</div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <button class="btn btn-primary w-100" type="submit">Kirim Permintaan Konsultasi</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
   </main>
 
+  <!-- ============ MODALS DETAIL PROYEK ============ -->
+  <div class="modal fade" id="modalProyek1" tabindex="-1" aria-labelledby="modalProyek1Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title h5" id="modalProyek1Label">Portofolio Pribadi (Minggu 2)</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          <p>Dibangun memakai HTML5 semantik penuh: header, nav, main, tiga section, aside, footer.</p>
+          <ul class="mb-0">
+            <li>Tabel data dengan caption, thead, tbody, tfoot, dan atribut scope</li>
+            <li>Dua jenis list — ordered dan unordered</li>
+            <li>Formulir 9 jenis input dengan label accessible</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalProyek2" tabindex="-1" aria-labelledby="modalProyek2Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title h5" id="modalProyek2Label">Formulir Konsultasi Accessible</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          <p>Formulir dikelompokkan dengan fieldset dan legend, setiap input berpasangan label <code>for</code>/<code>id</code>, dan validasi native lewat atribut <code>required</code> serta <code>aria-describedby</code>.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalProyek3" tabindex="-1" aria-labelledby="modalProyek3Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title h5" id="modalProyek3Label">Navbar &amp; Hero Responsif</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          <p>Navbar Bootstrap dengan breakpoint <code>lg</code> (992px) — di bawah lebar itu menu otomatis berubah jadi tombol hamburger yang bisa dibuka-tutup tanpa error console.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalProyek4" tabindex="-1" aria-labelledby="modalProyek4Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title h5" id="modalProyek4Label">Specificity &amp; CSS Variables</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          <p>Demo perhitungan skor spesifisitas (inline, id, class, element), pseudo-element <code>::before</code> untuk mikro-interaksi, dan variabel CSS di <code>:root</code> untuk tema warna terpusat.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ============ FOOTER ============ -->
-  <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <p>© 2026 Dea Hutapea — Institut Teknologi Del.</p>
+  <footer class="site-footer py-4">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <p class="mb-0 text-secondary small">© 2026 Dea Hutapea — Institut Teknologi Del.</p>
       <nav aria-label="Navigasi footer">
-        <ul>
-          <li><a href="#beranda">Kembali ke atas</a></li>
-          <li><a href="https://github.com/[username]">GitHub</a></li>
-          <li><a href="mailto:nama@students.del.ac.id">Email</a></li>
+        <ul class="list-unstyled d-flex gap-3 mb-0 small">
+          <li><a href="#hero" class="link-secondary text-decoration-none">Kembali ke atas</a></li>
+          <li><a href="https://github.com/DeaHutapea" class="link-secondary text-decoration-none">GitHub</a></li>
+          <li><a href="mailto:nama@students.del.ac.id" class="link-secondary text-decoration-none">Email</a></li>
         </ul>
       </nav>
     </div>
   </footer>
 
+  <!-- Bootstrap JS Bundle: wajib untuk navbar toggle & modal -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Aktifkan feedback validasi visual Bootstrap saat form disubmit
+    (() => {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach((form) => {
+        form.addEventListener('submit', (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
 </body>
 </html>
