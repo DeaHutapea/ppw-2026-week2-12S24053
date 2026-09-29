@@ -1,4 +1,4 @@
-# ppw-2026-week2-12S24053 — branch `week3-bootstrap`
+# ppw-2026-week2-12S24053 — branch `lab3_bootstrap`
 
 Refactoring **Tugas Minggu 2** menjadi berstandar **Bootstrap 5.3** — mata kuliah
 **Pemrograman dan Pengujian Aplikasi Web (12S3101)**, Institut Teknologi Del.
@@ -17,7 +17,7 @@ semantik dan aksesibilitas dari versi sebelumnya.
 ## Demo live
 
 - **Minggu 2 (main):** https://deahutapea.github.io/ppw-2026-week2-12S24053/
-- **Minggu 3 (week3-bootstrap):** https://deahutapea.github.io/ppw-2026-week2-12S24053/ *(branch aktif setelah Pages diarahkan ke `week3-bootstrap`)*
+- **Minggu 3 (`lab3_bootstrap`):** https://deahutapea.github.io/ppw-2026-week2-12S24053/ *(branch aktif setelah Pages diarahkan ke `lab3_bootstrap`)*
 
 ## Sebelum vs Sesudah Integrasi Framework
 
@@ -32,7 +32,7 @@ semantik dan aksesibilitas dari versi sebelumnya.
 | Ikon | Tidak ada | Bootstrap Icons |
 | Validasi form | Native HTML5 saja | Native HTML5 + kelas `.is-invalid` / `.invalid-feedback` Bootstrap |
 
-## Struktur berkas (branch `week3-bootstrap`)
+## Struktur berkas (branch `lab3_bootstrap`)
 
 ```
 ppw-2026-week2-12S24053/
@@ -55,7 +55,7 @@ ppw-2026-week2-12S24053/
 | 3 | Grid portofolio & modal | 4 kartu proyek (`row-cols-1 row-cols-md-2 row-cols-lg-3 g-4`), tiap kartu terhubung ke modal detail berbeda |
 | 4 | Modernisasi formulir | Floating labels (nama, email, pesan), input group berikon (telepon), select topik, checkbox persetujuan, `.invalid-feedback` |
 | 5 | Custom overrides & theming | 9 variabel CSS di `:root`, override `--bs-primary` tanpa `!important`, transisi hover pada kartu dan tombol |
-| 6 | Git & deployment | Branch `week3-bootstrap`, commit terstruktur, README dengan tabel komparasi, live di GitHub Pages |
+| 6 | Git & deployment | Branch `lab3_bootstrap`, commit terstruktur, README dengan tabel komparasi, live di GitHub Pages |
 
 ## Teknologi
 
