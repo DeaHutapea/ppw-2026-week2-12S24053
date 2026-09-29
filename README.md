@@ -25,7 +25,7 @@ semantik dan aksesibilitas dari versi sebelumnya.
 |---|---|---|
 | Navigasi | `<nav>` custom, tanpa menu mobile | Navbar Bootstrap `sticky-top` dengan tombol hamburger collapse |
 | Tata letak | CSS Grid & Flexbox custom | Sistem grid 12-kolom Bootstrap (`row`, `col-lg-*`) |
-| Kartu proyek | Baris tabel data statis | Grid 4 kartu (`row-cols-1 row-cols-md-2 row-cols-lg-2`) dengan modal detail |
+| Kartu proyek | Baris tabel data statis | Grid 4 kartu (`row-cols-1 row-cols-md-2 row-cols-lg-3`) dengan modal detail |
 | Formulir | `form-control` custom polos | Floating labels, input group berikon, umpan balik validasi visual |
 | Warna & tema | Variabel CSS di `:root` | Variabel CSS di `:root` **+** override `--bs-primary` Bootstrap |
 | Ukuran kode CSS | 1 file custom penuh (± 400 baris) | `custom-style.css` lebih ringkas, sebagian besar gaya diwariskan dari Bootstrap |
@@ -52,7 +52,7 @@ ppw-2026-week2-12S24053/
 |----|----------|--------------|
 | 1 | Fondasi framework & semantik | Bootstrap 5.3 CDN + Bootstrap Icons; header/nav/main/section/footer tetap utuh; `custom-style.css` dimuat setelah Bootstrap |
 | 2 | Responsive navbar & hero | Navbar `sticky-top` + brand; hamburger toggle; hero dua kolom dengan CTA |
-| 3 | Grid portofolio & modal | 4 kartu proyek (`row-cols-1 row-cols-md-2 row-cols-lg-2 g-4`), tiap kartu terhubung ke modal detail berbeda |
+| 3 | Grid portofolio & modal | 4 kartu proyek (`row-cols-1 row-cols-md-2 row-cols-lg-3 g-4`), tiap kartu terhubung ke modal detail berbeda |
 | 4 | Modernisasi formulir | Floating labels (nama, email, pesan), input group berikon (telepon), select topik, checkbox persetujuan, `.invalid-feedback` |
 | 5 | Custom overrides & theming | 9 variabel CSS di `:root`, override `--bs-primary` tanpa `!important`, transisi hover pada kartu dan tombol |
 | 6 | Git & deployment | Branch `week3-bootstrap`, commit terstruktur, README dengan tabel komparasi, live di GitHub Pages |

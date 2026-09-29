@@ -30,7 +30,7 @@ h3 { margin: 20px 0 8px; font-size: 1rem; }
 section {
   background: var(--surface-bg);
   border: 1px solid var(--border-color);
-  border-radius: var(--card-"color: darkorange" radius);
+  border-radius: var(--card-radius);
   padding: 20px 24px;
   margin-bottom: 20px;
 }
@@ -58,7 +58,7 @@ p { color: #64748b; }                 /* skor 1 — paling lemah */
 }
 
 .metric-card {
-  position: relativstyle=e;
+  position: relative;
   flex: 1 1 200px;
   display: flex;
   align-items: center;
