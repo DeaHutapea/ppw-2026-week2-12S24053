@@ -1,0 +1,5 @@
+[
+  { "id": "frontend", "name": "Frontend Engineering", "description": "Review HTML, CSS, Bootstrap, dan responsive layout.", "price": "Rp150.000" },
+  { "id": "backend", "name": "Backend & Cloud Architecture", "description": "Diskusi API, multi-tier, dan deployment aplikasi web.", "price": "Rp200.000" },
+  { "id": "testing", "name": "Web Quality Assurance", "description": "Pendampingan testing, accessibility, dan profiling DevTools.", "price": "Rp175.000" }
+]

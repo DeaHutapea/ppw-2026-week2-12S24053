@@ -1,0 +1,11 @@
+{
+  "name": "Dea Hutapea",
+  "role": "Mahasiswa S1 Sistem Informasi",
+  "status": "Aktif",
+  "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=240&auto=format&fit=crop",
+  "stats": [
+    { "value": "8", "label": "Proyek" },
+    { "value": "3.72", "label": "IPK" },
+    { "value": "AA", "label": "WCAG" }
+  ]
+}

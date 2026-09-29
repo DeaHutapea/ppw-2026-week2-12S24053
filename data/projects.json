@@ -1,0 +1,46 @@
+[
+  {
+    "id": "portfolio-week2",
+    "title": "Portofolio Pribadi (Minggu 2)",
+    "category": "HTML5 & CSS",
+    "description": "Halaman portofolio semantik dengan tabel data, list, dan formulir accessible.",
+    "details": ["Struktur HTML5 semantik", "Tabel data dengan caption dan scope", "Sembilan jenis input dengan label accessible"],
+    "metrics": { "duration": "2 minggu", "accessibility": "WCAG AA" },
+    "tags": ["HTML5", "CSS", "Accessibility"],
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900&auto=format&fit=crop",
+    "link": "https://github.com/deahutapea"
+  },
+  {
+    "id": "accessible-form",
+    "title": "Formulir Konsultasi Accessible",
+    "category": "Aksesibilitas",
+    "description": "Formulir dengan label eksplisit, validasi native HTML5, dan kontras warna yang teruji.",
+    "details": ["Label dan input terhubung", "Validasi required dan pattern", "Navigasi keyboard"],
+    "metrics": { "duration": "1 minggu", "accessibility": "AA" },
+    "tags": ["Forms", "WCAG", "UX"],
+    "image": "https://images.unsplash.com/photo-1553484771-047a44eee27b?w=900&auto=format&fit=crop",
+    "link": "https://github.com/deahutapea"
+  },
+  {
+    "id": "bootstrap-portal",
+    "title": "Portal Bootstrap Responsif",
+    "category": "Bootstrap 5",
+    "description": "Portal dengan navbar collapse, sistem grid 12 kolom, dan komponen Bootstrap 5.3.",
+    "details": ["Navbar responsif", "Grid multi-breakpoint", "Floating labels dan modal"],
+    "metrics": { "duration": "2 minggu", "bundle": "Bootstrap 5.3" },
+    "tags": ["Bootstrap", "Responsive", "UI"],
+    "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=900&auto=format&fit=crop",
+    "link": "https://github.com/deahutapea"
+  },
+  {
+    "id": "web-architecture",
+    "title": "Decoupled Web Architecture",
+    "category": "Arsitektur Web",
+    "description": "Refactoring portofolio menjadi CSR dengan provider JSON modular, UI states, dan REST dispatch.",
+    "details": ["Data layer JSON", "Dynamic client-side rendering", "Persistensi localStorage"],
+    "metrics": { "duration": "1 minggu", "rendering": "CSR" },
+    "tags": ["JavaScript", "Fetch API", "Architecture"],
+    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&auto=format&fit=crop",
+    "link": "https://github.com/deahutapea"
+  }
+]
